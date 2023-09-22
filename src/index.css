@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.input-style {
+    @apply p-2 border-b-2 border-gray-400 outline-green-500
+}
+.sign-up{
+    @apply border px-4 py-2 rounded-md border-black hover:bg-green-500 hover:text-white hover:border-green-500
+}
