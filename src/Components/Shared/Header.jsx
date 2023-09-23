@@ -1,22 +1,34 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import useAuth from '../../Hooks/useAuth';
+import { becomeBuyer, becomeHost } from '../../API/auth';
 
 const Header = () => {
-    const { user, logOut } = useAuth()
+    const { user, logOut, role, setRole } = useAuth()
     const [smDevice, setSmDevice] = useState(false)
+
+    console.log(role);
 
     const handleLogout = () => {
         logOut()
-            .then(() => {})
-            .catch(() => {})
+            .then(() => { })
+            .catch(() => { })
+    }
+
+    const handleHost = () => {
+        becomeHost(user?.email)
+        setRole('host')
+    }
+    const handleBuyer = () => {
+        becomeBuyer(user?.email)
+        setRole('buyer')
     }
 
     return (
         <div className="z-10 navbar  sticky top-0 bg-white md:px-8">
             <div className="navbar-start">
-                <div className='flex items-center'>                   
+                <div className='flex items-center'>
                     <div>
                         <h1 className='font-bold md:text-2xl'>Toy<span className='text-blue-600'>Emporium</span></h1>
                         <p className='text-sm italic'>We are the best</p>
@@ -26,14 +38,24 @@ const Header = () => {
             <div className="navbar-center hidden md:flex">
                 <ul className="menu menu-horizontal flex gap-2 font-semibold lg:gap-12">
                     <NavLink className={({ isActive }) => (isActive ? "text-[#742BFD]" : "")} to="/" >Home</NavLink>
-                    <NavLink className={({ isActive }) => (isActive ? "text-[#742BFD]" : "")} to="/subscriptions">My Subscriptions</NavLink>
                     {
-                        user?.email &&
+                        role == 'buyer' && <NavLink className={({ isActive }) => (isActive ? "text-[#742BFD]" : "")} to="/mySubscriptions">My Subscriptions</NavLink>
+                    }
+                    {
+                        role == 'host' && <NavLink className={({ isActive }) => (isActive ? "text-[#742BFD]" : "")} to="/myPlans">My Plans</NavLink>
+                    }
+                    {
+                        role == 'host' &&
                         <div className='flex gap-8'>
                             <NavLink className={({ isActive }) => (isActive ? "text-[#742BFD]" : "")} to="/addPlan">Add your plan</NavLink>
-                            <NavLink className={({ isActive }) => (isActive ? "text-[#742BFD]" : "")} to="/addToys">Add Toy</NavLink>
                         </div>
-                    }                    
+                    }
+                    {
+                        role == 'host' && <button onClick={handleBuyer} className="text-green-400 text-xl font-semibold">Switch To Buying</button>
+                    }
+                    {
+                        role == 'buyer' && <button onClick={handleHost} className="text-green-400 text-xl font-semibold">Switch To Selling</button>
+                    }
                 </ul>
             </div>
             <div className='md:hidden navbar-end relative'>
@@ -52,13 +74,12 @@ const Header = () => {
                             }
                             <NavLink className='nav-links' to="/blogs">Blogs</NavLink>
                             {
-                                user?.email ? <div className='flex'>                                   
+                                user?.email ? <div className='flex'>
                                     <button onClick={handleLogout} className='submit-button'>Logout</button>
                                 </div>
                                     : <button className='sign-up'><NavLink to="/login">Login</NavLink></button>
                             }
                         </ul>
-
                     </div>
                 }
             </div>

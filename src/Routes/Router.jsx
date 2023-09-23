@@ -5,6 +5,11 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
 import AddPlan from "../Pages/AddPlan/AddPlan";
 import Payment from "../Pages/Home/Payment/Payment";
+import MySubscriptions from "../Pages/MySubscriptions/MySubscriptions";
+import MyPlans from "../Pages/MyPlans/MyPlans";
+import Details from "../Pages/Home/Details/Details";
+import AdminRoute from "./AdminRoute";
+import UserRoute from "./userRoute";
 
 const router = createBrowserRouter([
     {
@@ -17,11 +22,24 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addPlan',
-                element: <AddPlan/>
+                element: <AdminRoute><AddPlan/></AdminRoute>
             },
             {
-                path: '/payment/:id',
-                element: <Payment/>
+                path: '/mySubscriptions',
+                element: <UserRoute><MySubscriptions/></UserRoute>
+            },
+            {
+                path: '/myPlans',
+                element: <AdminRoute><MyPlans/></AdminRoute>
+            },
+            {
+                path: '/details/:id',
+                element: <Details/>,
+                loader: ({params})=> fetch(`http://localhost:5000/plans/${params.id}`)
+            },
+            {
+                path: '/payments',
+                element: <Payment/>              
             }
         ]
     },

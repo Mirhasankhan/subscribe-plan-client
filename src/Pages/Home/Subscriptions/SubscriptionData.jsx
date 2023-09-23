@@ -1,5 +1,5 @@
 
-const SubscriptionData = ({ plan,handleMonthly,handleYearly }) => {
+const SubscriptionData = ({ plan,handleCost}) => {
     const { _id,planName, monthly, yearly, image } = plan;
 
     const divStyle = {
@@ -10,18 +10,18 @@ const SubscriptionData = ({ plan,handleMonthly,handleYearly }) => {
     };
    
     return (
-        <div className="border p-4 h-48 flex flex-col" style={divStyle}>
+        <div className="border p-4 h-52 rounded-lg flex flex-col hover:scale-110 transition-transform duration-500" style={divStyle}>
             <div>
-                <h1 className="text-center text-3xl font-semibold text-green-400">{planName}</h1>           
+                <h1 className="text-center text-5xl font-semibold text-white">{planName}</h1>           
             </div>
             <div className="flex justify-between mt-auto">
-                <div onClick={()=>handleMonthly(_id,monthly)} className="bg-yellow-400 font-semibold cursor-pointer p-2 text-white rounded-md">
-                    <h1>Montly Subscription</h1>
-                    <p>${monthly}</p>
+                <div onClick={()=>handleCost(_id,monthly)} className="bg-yellow-400 font-semibold cursor-pointer p-2 rounded-md">
+                    <h1>Subscribe</h1>
+                    <p>${monthly}/Monthly</p>
                 </div>
-                <div onClick={()=>handleMonthly(_id,yearly)} className="bg-yellow-400 font-semibold cursor-pointer p-2 text-white rounded-md">
-                    <h1>Yearly Subscription</h1>
-                    <p>${yearly}</p>
+                <div onClick={()=>handleCost(_id,yearly)} className="bg-yellow-400 font-semibold cursor-pointer p-2 rounded-md">
+                    <h1>Subscribe</h1>
+                    <p>${yearly}/Yearly</p>
                 </div>
             </div>
         </div>

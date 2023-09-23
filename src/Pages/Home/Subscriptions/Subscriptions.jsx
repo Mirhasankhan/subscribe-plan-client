@@ -1,35 +1,33 @@
 import { useNavigate } from "react-router-dom";
 import usePlans from "../../../Hooks/usePlans";
 import SubscriptionData from "./SubscriptionData";
+import useAuth from "../../../Hooks/useAuth";
 
 const Subscriptions = () => {
+    const { user } = useAuth()
     const [plansData, refetch] = usePlans()
     const navigate = useNavigate()
 
-    const handleMonthly = (id, cost) => {
-        navigate(`/payment/${id}`, {
-            state: {
-                cost: cost
-            }
-        }) 
-    }
-    const handleYearly = (id, cost) => {
-        navigate(`/payment/${id}`, {
-            state: {
-                cost: cost
-            }
-        })
-        console.log(id, cost);
+    const handleCost = (id, cost) => {
+        if (user?.email) {
+            navigate(`/details/${id}`, {
+                state: {
+                    cost: cost
+                }
+            })
+        }
+        else {
+            navigate('/login')
+        }
     }
 
     return (
-        <div className="grid grid-cols-3 gap-4 mx-8">
+        <div className="grid grid-cols-2 gap-12 mx-16">
             {
                 plansData.map(plan => <SubscriptionData
                     key={plan._id}
                     plan={plan}
-                    handleMonthly={handleMonthly}
-                    handleYearly={handleYearly}
+                    handleCost={handleCost}
                 ></SubscriptionData>)
             }
         </div>
