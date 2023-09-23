@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import useAuth from '../../Hooks/useAuth';
 import SocialLogin from '../../Components/SocialLogin/SocailLogin';
+import { Helmet } from 'react-helmet-async';
 
 
 const Login = () => {
@@ -58,8 +59,9 @@ const Login = () => {
     }
     return (
         <div className='py-10'>
+            <Helmet title='Login | Subscrible-Plan '></Helmet>
             <div className='md:w-1/3 mx-3 md:mx-auto bg-white rounded-lg p-3 border-2'>
-                <h1 className='font-semibold text-2xl text-center'>Login To Tune<span className='text-sky-400'>Tutor</span></h1>
+                <h1 className='font-semibold text-2xl text-center'>Login To Subscription<span className='text-sky-400'>Plans</span></h1>
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                     <div className="form-control">
                         <label className="label">

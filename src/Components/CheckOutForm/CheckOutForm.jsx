@@ -18,7 +18,7 @@ const CheckOutFrom = ({ data, cost }) => {
     const [tId, setTId] = useState('')
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://subscribe-plan-server.vercel.app/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -83,7 +83,7 @@ const CheckOutFrom = ({ data, cost }) => {
                 sellerEmail: email,
                 planName
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://subscribe-plan-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

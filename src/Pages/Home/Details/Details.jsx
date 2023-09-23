@@ -5,6 +5,7 @@ const Details = () => {
     const location = useLocation()
     const cost = location?.state?.cost
     const data = useLoaderData()
+    console.log(data);
    
     const handlePayment = () => {
         navigate(`/payments`, {

@@ -1,5 +1,5 @@
 export const addNewSubscription = async planData => {
-    const response = await fetch('http://localhost:5000/plans', {
+    const response = await fetch('https://subscribe-plan-server.vercel.app/plans', {
         method: 'POST',
         headers: {
             'content-type': 'application/json',

@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 import { addNewSubscription } from "../../API/subscription";
 import useAuth from "../../Hooks/useAuth";
 import PlanForm from "./PlanForm";
+import { Helmet } from "react-helmet-async";
 
 const AddPlan = () => {
     const {user} = useAuth()
@@ -22,6 +23,7 @@ const AddPlan = () => {
     }
     return (
         <div>
+            <Helmet title='Add Plan | Subscrible-Plan '></Helmet>
             <PlanForm
                 handleSubmit={handleSubmit}
             />

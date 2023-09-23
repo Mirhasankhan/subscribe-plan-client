@@ -3,8 +3,8 @@ const SubscriptionData = ({ plan,handleCost}) => {
     const { _id,planName, monthly, yearly, image } = plan;
 
     const divStyle = {
-        backgroundImage: `url(${image})`, // Set the background image URL
-        backgroundSize: 'cover', // You can adjust these styles as needed
+        backgroundImage: `url(${image})`,
+        backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
     };

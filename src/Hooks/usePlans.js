@@ -6,7 +6,7 @@ const usePlans = ()=>{
     const { data: plansData = [], refetch } = useQuery({
         queryKey: ['plans', user?.email],
         queryFn: async () => {            
-            const res = await fetch(`http://localhost:5000/plans`)
+            const res = await fetch(`https://subscribe-plan-server.vercel.app/plans`)
             return res.json()
         }        
     })

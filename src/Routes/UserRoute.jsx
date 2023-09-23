@@ -8,7 +8,7 @@ const UserRoute = ({children}) => {
     if (loading) {
         return <Loader></Loader>
     }
-    else if (role !== 'host') {
+    else if (role == 'buyer') {
         return children
     }
     else {

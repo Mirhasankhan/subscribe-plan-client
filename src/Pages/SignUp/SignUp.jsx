@@ -2,25 +2,16 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
-import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import { saveUser } from "../../API/auth";
 import SocialLogin from "../../Components/SocialLogin/SocailLogin";
+import { Helmet } from "react-helmet-async";
 
-// const token = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN
-
-const SignUp = () => {
-    // const image_hosting_URL = `https://api.imgbb.com/1/upload?key=${token}`
+const SignUp = () => {    
     const { createUser, updateUserProfile, logOut } = useAuth()
-    const [seller, setSeller] = useState(false)
     const location = useLocation()
     const navigate = useNavigate()
     const from = location?.state?.from?.pathname || '/login'
-
-    const handleSeller = (e) => {
-        const value = e.target.checked;
-        setSeller(value)
-    }
 
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -66,8 +57,9 @@ const SignUp = () => {
 
     return (
         <div className='py-10'>
+            <Helmet title='Sign Up | Subscrible-Plan '></Helmet>
             <div className='md:w-2/5 w-2/3 mx-auto bg-white rounded-lg p-3 border-2'>
-                <h1 className='font-semibold text-2xl text-center'>Create your Tune<span className='text-sky-400'>Tutor</span> Account</h1>
+                <h1 className='font-semibold text-2xl text-center'>Create your Subscription<span className='text-sky-400'>Plans</span> Account</h1>
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                     <div className="form-control">
                         <label className="label">
@@ -111,15 +103,10 @@ const SignUp = () => {
                         <input {...register("photo", { required: true })} type="url" placeholder="upload photo url" className="input-style" />
                         {errors.photo && <span className="text-red-600">Photo is required</span>}
 
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <input onChange={handleSeller} type="checkbox" name="" id="" />
-                        <p className="text-red-500 font-semibold text-xl">Sign Up As Seller</p>
-                    </div>
+                    </div>                    
                     <div className="form-control mt-6">
                         <input className="sign-up" type="submit" value="Sign Up" />
                     </div>
-
                 </form>
 
                 <h1 className="pl-6">Already have an account? <Link className='text-blue-600' to="/login">Login</Link></h1>

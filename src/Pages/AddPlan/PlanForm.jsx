@@ -1,29 +1,32 @@
 
-const PlanForm = ({handleSubmit}) => {
+const PlanForm = ({ handleSubmit }) => {
     return (
         <div>
-            <form onSubmit={handleSubmit} className="bg-base-300 p-6 flex w-1/2 gap-6 mx-auto">
-                <div>
+            <h1 className="text-center text-3xl font-semibold my-6">Upload Your New Plan</h1>
+            <form onSubmit={handleSubmit} className="bg-base-300 mt-6 rounded-lg p-6 w-1/2  mx-auto">
+                <div className="flex gap-6">
                     <div>
-                        <label htmlFor="">Subscription Name</label>
-                        <input required name="plan" className="input-style w-full" type="text" placeholder="Write Name Here" />
+                        <div>
+                            <label className="font-semibold" htmlFor="">Subscription Name</label>
+                            <input required name="plan" className="input-style w-full mt-2" type="text" placeholder="Write Name Here" />
+                        </div>
+                        <div className="mt-3">
+                            <label className="font-semibold" htmlFor="">Image</label>
+                            <input required className="input-style w-full mt-2" type="url" name="image" placeholder="PhotoURL" />
+                        </div>
                     </div>
                     <div>
-                        <label htmlFor="">Image</label>
-                        <input required className="input-style w-full" type="url" name="image"/>
+                        <div>
+                            <label className="font-semibold" htmlFor="">Montly Cost</label>
+                            <input required name="monthly" className="input-style w-full mt-2" type="number" placeholder="cost" />
+                        </div>
+                        <div className="mt-3">
+                            <label className="font-semibold block" htmlFor="">Yearly Cost</label>
+                            <input required name="yearly" className="input-style w-full mt-2" type="number" placeholder="year cost" />
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <div>
-                        <label htmlFor="">Montly Cost</label>
-                        <input required name="monthly" className="input-style w-full" type="number" placeholder="cost" />
-                    </div>
-                    <div>
-                        <label className="block" htmlFor="">Yearly Cost</label>
-                        <input required name="yearly" className="input-style w-full" type="number" placeholder="year cost" />
-                    </div>
-                </div>
-                <input className="sign-up" type="submit" value="submit" />
+                <input className="sign-up w-full mt-4" type="submit" value="submit" />
             </form>
         </div>
     );

@@ -5,7 +5,7 @@ export const saveUser = user => {
       role: 'buyer'         
     }
   
-    fetch(`http://localhost:5000/users/${user?.email}`, {
+    fetch(`https://subscribe-plan-server.vercel.app/users/${user?.email}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -21,7 +21,7 @@ export const saveUser = user => {
       role: 'host',
     }
   
-    return fetch(`http://localhost:5000/users/${email}`, {
+    return fetch(`https://subscribe-plan-server.vercel.app/users/${email}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -37,7 +37,7 @@ export const saveUser = user => {
       role: 'buyer',
     }
   
-    return fetch(`http://localhost:5000/users/${email}`, {
+    return fetch(`https://subscribe-plan-server.vercel.app/users/${email}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -47,7 +47,7 @@ export const saveUser = user => {
   }
 
   export const getRole = async email => {
-    const response = await fetch(`http://localhost:5000/users?email=${email}`)
+    const response = await fetch(`https://subscribe-plan-server.vercel.app/users?email=${email}`)
     const user = await response.json()  
     return user[0]?.role
   }

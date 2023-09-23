@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import usePlans from "../../../Hooks/usePlans";
 import SubscriptionData from "./SubscriptionData";
 import useAuth from "../../../Hooks/useAuth";
+import Container from "../../../Components/Shared/Container";
 
 const Subscriptions = () => {
     const { user } = useAuth()
@@ -22,7 +23,8 @@ const Subscriptions = () => {
     }
 
     return (
-        <div className="grid grid-cols-2 gap-12 mx-16">
+        <Container>
+            <div className="grid grid-cols-2 gap-12 pt-6">
             {
                 plansData.map(plan => <SubscriptionData
                     key={plan._id}
@@ -31,6 +33,7 @@ const Subscriptions = () => {
                 ></SubscriptionData>)
             }
         </div>
+        </Container>
     );
 };
 

@@ -8,10 +8,10 @@ const PlansTable = ({ plans,handleDeletePlan }) => {
                 <img className="h-12 rounded-full w-12" src={image} alt="" />
             </th>
             <td>{planName}</td>
-            <td>{monthly}</td>
-            <td>{yearly}</td>
+            <td>${monthly}</td>
+            <td>${yearly}</td>
             <td>
-                <button onClick={()=>handleDeletePlan(_id)}>Delete</button>
+                <button className="sign-up" onClick={()=>handleDeletePlan(_id)}>Delete</button>
             </td>
         </tr>
     );
