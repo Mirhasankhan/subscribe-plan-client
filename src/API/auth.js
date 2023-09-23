@@ -1,7 +1,6 @@
 export const saveUser = user => {
     const currentUser = {
-      email: user?.email,
-      name: user?.name, 
+      email: user?.email,       
       role: 'buyer'         
     }
   

@@ -34,7 +34,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/details/:id',
-                element: <Details/>,
+                element: <UserRoute><Details/></UserRoute>,
                 loader: ({params})=> fetch(`https://subscribe-plan-server.vercel.app/plans/${params.id}`)
             },
             {

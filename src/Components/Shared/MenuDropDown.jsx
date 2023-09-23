@@ -6,6 +6,7 @@ import { becomeBuyer, becomeHost } from "../../API/auth";
 const MenuDropDown = () => {
     const { user, logOut, role, setRole } = useAuth()
     const [open, setOpen] = useState(false)
+    console.log(role);
 
     const handleLogout = () => {
         logOut()
@@ -15,7 +16,7 @@ const MenuDropDown = () => {
             .catch(() => { })
     }
 
-    
+
     const handleHost = () => {
         becomeHost(user?.email)
         setRole('host')
@@ -28,16 +29,17 @@ const MenuDropDown = () => {
         <div>
             {
                 user?.email ? <div className='relative'>
-                    <img onClick={()=>setOpen(!open)} title={user.displayName} className='cursor-pointer h-12 w-12 rounded-full mr-3 border-2 border-blue-400' src={user.photoURL} alt="" />
+                    <img onClick={() => setOpen(!open)} title={user.displayName} className='cursor-pointer h-12 w-12 rounded-full border-2 border-blue-400' src={user.photoURL} alt="" />
                     {
-                        open && <div className="absolute bg-gray-300 p-4 rounded-md top-14">
-                            <button onClick={handleLogout} className='sign-up'>Logout</button>
+                        open && <div className="absolute bg-gray-300 right-0 px-4 py-8 rounded-md top-14 w-48">
+                           
                             {
-                            role == 'host' && <button onClick={handleBuyer} className="text-green-400 font-semibold sign-up mt-4">Switch Buying</button>
-                        }
-                        {
-                            role == 'buyer' && <button onClick={handleHost} className="text-green-400 font-semibold sign-up mt-4">Switch Selling</button>
-                        }
+                                role == 'host' && <button onClick={handleBuyer} className="text-green-400 font-semibold sign-up">Switch Buying</button>
+                            }
+                            {
+                                role == 'buyer' && <button onClick={handleHost} className="text-green-400 font-semibold sign-up">Switch Admin</button>
+                            }
+                             <button onClick={handleLogout} className='delete-button mt-4 block'>Logout</button>
                         </div>
                     }
                 </div>

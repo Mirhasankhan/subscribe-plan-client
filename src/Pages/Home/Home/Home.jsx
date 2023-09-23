@@ -3,7 +3,7 @@ import Subscriptions from '../Subscriptions/Subscriptions';
 
 const Home = () => {
     return (
-        <div>
+        <div className='mb-4'>
             <Helmet title='Home | Subscrible-Plan '></Helmet>
             <Subscriptions />
         </div>

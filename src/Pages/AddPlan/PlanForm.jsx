@@ -26,7 +26,7 @@ const PlanForm = ({ handleSubmit }) => {
                         </div>
                     </div>
                 </div>
-                <input className="sign-up w-full mt-4" type="submit" value="submit" />
+                <input className="sign-up w-full mt-4" type="submit" value="Submit" />
             </form>
         </div>
     );
