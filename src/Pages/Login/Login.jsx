@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet-async';
 
 
 const Login = () => {
-    const { signIn, resetPassword } = useAuth()
+    const { signIn, resetPassword, setRole } = useAuth()
     const [show, setShow] = useState(true)
     const location = useLocation()
     const navigate = useNavigate()
@@ -19,7 +19,9 @@ const Login = () => {
     const onSubmit = data => {
         signIn(data.email, data.password)
             .then(() => {
+                setRole('buyer')
                 toast.success('LoggedIn successfully', {
+                    
                     position: 'top-right',
                     style: { backgroundColor: 'blue', color: 'white' }
                 })

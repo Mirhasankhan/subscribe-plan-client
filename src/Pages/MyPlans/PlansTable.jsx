@@ -11,7 +11,7 @@ const PlansTable = ({ plans,handleDeletePlan }) => {
             <td>${monthly}</td>
             <td>${yearly}</td>
             <td>
-                <button className="sign-up" onClick={()=>handleDeletePlan(_id)}>Delete</button>
+                <button className="delete-button" onClick={()=>handleDeletePlan(_id)}>Delete</button>
             </td>
         </tr>
     );

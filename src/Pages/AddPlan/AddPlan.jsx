@@ -15,7 +15,8 @@ const AddPlan = () => {
         const yearly = form.yearly.value;
         const newSubsciption = {planName,image,monthly,yearly, email: user?.email}
         addNewSubscription(newSubsciption).then(() =>{          
-            toast.success('plan created')
+            toast.success('Plan Uploaded')
+            form.reset()
         })
         .catch(err =>{
             console.log(err);

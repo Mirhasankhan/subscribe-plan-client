@@ -5,8 +5,7 @@ import { becomeBuyer, becomeHost } from "../../API/auth";
 
 const MenuDropDown = () => {
     const { user, logOut, role, setRole } = useAuth()
-    const [open, setOpen] = useState(false)
-    console.log(role);
+    const [open, setOpen] = useState(false)  
 
     const handleLogout = () => {
         logOut()

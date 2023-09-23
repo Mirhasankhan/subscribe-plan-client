@@ -1,16 +1,15 @@
 import { deleteSubscription } from "../../API/payment";
 import useMySubscriptions from "../../Hooks/useMySubscription";
 
-const TableRow = ({subs}) => {   
-    const [, refetch] = useMySubscriptions() 
-    const {_id, image, transactionId, cost, sellerEmail,planName} = subs;
+const TableRow = ({ subs }) => {
+    const [, refetch] = useMySubscriptions()
+    const { _id, image, transactionId, cost, sellerEmail, planName } = subs;
 
-    const handleDelete = (id)=>{
+    const handleDelete = (id) => {
         deleteSubscription(id)
-        .then(data =>{
-            refetch()
-            console.log(data);
-        })
+            .then(data => {
+                refetch()
+            })
     }
     return (
         <tr>
@@ -19,11 +18,10 @@ const TableRow = ({subs}) => {
             </th>
             <td>{planName}</td>
             <td>{sellerEmail}</td>
-            <td>Monthly</td>
             <td>{transactionId}</td>
             <td>${cost}</td>
             <td>
-                <button onClick={()=>handleDelete(_id)}>Delete</button>
+                <button className="delete-button" onClick={() => handleDelete(_id)}>Delete</button>
             </td>
         </tr>
     )

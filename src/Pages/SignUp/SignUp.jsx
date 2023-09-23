@@ -7,7 +7,7 @@ import { saveUser } from "../../API/auth";
 import SocialLogin from "../../Components/SocialLogin/SocailLogin";
 import { Helmet } from "react-helmet-async";
 
-const SignUp = () => {    
+const SignUp = () => {
     const { createUser, updateUserProfile, logOut } = useAuth()
     const location = useLocation()
     const navigate = useNavigate()
@@ -37,12 +37,10 @@ const SignUp = () => {
                             })
                             navigate(from, { replace: true })
                             logOut()
-                            .then((data)=>{
-                                console.log(data);
-                            })
-                            .catch(err =>{
-                                console.log(err);
-                            })
+                                .then((data) => { })
+                                .catch(err => {
+                                    console.log(err);
+                                })
                             reset()
                         })
                 })
@@ -103,12 +101,11 @@ const SignUp = () => {
                         <input {...register("photo", { required: true })} type="url" placeholder="upload photo url" className="input-style" />
                         {errors.photo && <span className="text-red-600">Photo is required</span>}
 
-                    </div>                    
+                    </div>
                     <div className="form-control mt-6">
                         <input className="sign-up" type="submit" value="Sign Up" />
                     </div>
                 </form>
-
                 <h1 className="pl-6">Already have an account? <Link className='text-blue-600' to="/login">Login</Link></h1>
                 <div className="divider">Or</div>
                 <SocialLogin></SocialLogin>
