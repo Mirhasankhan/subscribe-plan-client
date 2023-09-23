@@ -8,6 +8,9 @@ const AdminRoute = ({ children }) => {
     if (loading) {
         return <Loader></Loader>
     }
+    else if(role !== 'host'){
+        <Loader></Loader>
+    }
     else if (role == 'host') {
         return children
     }
